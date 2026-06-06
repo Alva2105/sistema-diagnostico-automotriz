@@ -1,0 +1,534 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffe600, #ff6f00);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffe600, #ff6f00);
+}
+
+.fondo-green {
+    position: fixed;
+    top: 0; left: 0; right: 0; min-height: 100%;
+    background: url("/public/assets/img/generales/Deportivo_Naranja.jpg") no-repeat center center/cover;
+    background-color: rgba(0,0,0,.7);
+    background-blend-mode: darken;
+    z-index: -1;
+}
+
+/* Contenedor */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* Título */
+.title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 60px;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fila {
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-bottom: 30px;
+}
+
+/* Inputs generales */
+form input {
+    width: 320px;
+    max-width: 90%;
+    padding: 14px 18px;
+    margin-bottom: 10px;      /* espacio entre un recuadro y el siguiente */
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    background: rgba(255,255,255,0.3); /* semi-transparente */
+    color: #fff;
+    outline: none;
+    backdrop-filter: blur(5px); /* efecto glass */
+}
+
+form input::placeholder {
+    color: rgba(255,255,255,0.8);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.input-container input[type="text"],
+.input-container input[type="email"],
+.input-container input[type="password"],
+.input-container input[type="tel"],
+.input-container input[type="date"] {
+    width: 320px;
+    max-width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    background: rgba(255,255,255,0.3); /* semi-transparente */
+    color: #fff;
+    outline: none;
+    backdrop-filter: blur(5px); /* efecto glass */
+    box-sizing: border-box;
+}
+
+.input-container input.is-invalid {
+    border-color: #ff6b6b;
+}
+
+.mostrar {
+    display: inline-block !important;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.icono {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+
+.error-mensaje {
+    display: none;                        /* inicia oculto */
+    position: relative;                    /* clave para que el texto quede sobre la imagen */
+    flex-direction: row;
+    gap: 10px;                             /* espacio entre el icono y el texto */
+    padding: 10px 15px 10px 25px;                         /* espacio interno */
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: rgb(245, 243, 241);            /* color del texto encima de la imagen */
+    font-family: "Audiowide", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.85rem;                    /* tamaño del texto proporcional */
+    text-align: justify;
+    line-height: 1.2;
+    background-color: white;               /* opcional: ayuda a que el texto sea legible */
+    background-image: url('/public/assets/img/generales/fondoError.jpg'); /* fondo */
+    background-repeat: no-repeat;
+    background-position: center center;    /* centra la imagen */
+    background-size: cover;                /* ajusta la imagen al tamaño del contenedor */
+    animation: fadeIn 0.5s ease-in-out;
+    word-wrap: break-word;                 /* evita que el texto se desborde */
+    max-width: 360px;                      /* opcional: limita ancho del mensaje */
+    border: 2px solid #ff0040; /* Color neón (puedes cambiarlo) */
+    box-shadow: 
+        0 0 5px #ff0040,
+        0 0 10px #ff0040,
+        0 0 20px #ff0040,
+        0 0 40px #ff0040;
+}
+
+.icono-rueda {
+    display: none;
+    position: absolute;
+    top: 75%;               /* centra verticalmente respecto al contenedor padre */
+    left: -54px;            /* lo colocamos a la izquierda del mensaje */
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    animation: fadeIn 0.5s ease-in-out, girar 2s linear infinite;
+}
+
+/* Cuando se muestre el mensaje, mostramos la rueda también */
+.error-mensaje.mostrar + .icono-rueda {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes girar {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+@keyframes neonGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 5px #ff0040,
+            0 0 10px #ff0040,
+            0 0 20px #ff0040,
+            0 0 40px #ff0040,
+            0 0 80px #ff0040;
+        border-color: #ff0040;
+    }
+    50% {
+        box-shadow:
+            0 0 2px #ff3366,
+            0 0 5px #ff3366,
+            0 0 10px #ff3366,
+            0 0 20px #ff3366;
+        border-color: #ff3366;
+    }
+}
+
+/*! NOMBRES*/
+#NameHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#NameError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#NameCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! CORREO*/
+#CorreoHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#CorreoError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#CorreoCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! AP PATERNO*/
+#ApPaternoHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#ApPaternoError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ApPaternoCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! AP MATERNO */
+#ApMaternoHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+#ApMaternoError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ApMaternoCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! CONTRASENA */
+#ContrasenaHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+#ContraError.icono-error {
+    right: 55%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ContraCheck.icono-check {
+    right: 55%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ojito1[src*="/public/assets/img/icons/ojo_cerrado.png"] {
+    width: auto;
+    height: 45px;
+}
+
+#ojito1[src*="/public/assets/img/icons/ojo_abierto.png"] {
+    width: auto;
+    height: 17px;
+}
+
+/* Estilo del botón de ver contraseña */
+.ver_contra {
+    position: static;
+    margin: -34px 0px 10px 277px; /* Ajusta la posición del botón */
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ver_contra img {
+    height: 25px;
+    width: auto;
+    pointer-events: none;
+}
+
+/*! CONFIRMAR CONTRASENA */
+#ConfirmHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#ConfirmError.icono-error {
+    right: 55%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ConfirmCheck.icono-check {
+    right: 55%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#ojitoConfirmar[src*="/public/assets/img/icons/ojo_cerrado.png"] {
+    width: auto;
+    height: 45px;
+}
+
+#ojitoConfirmar[src*="/public/assets/img/icons/ojo_abierto.png"] {
+    width: auto;
+    height: 17px;
+}
+
+/*! CI */
+#CIHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+#CIError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#CICheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! TELEFONO */
+.telefono {
+    padding-left: 50px !important;
+}
+
+#TelefonoHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#TelefonoError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#TelefonoCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+.bandera-icono {
+    background-image: url('assets/img/icons/bandera_bolivia.png');
+    background-repeat: no-repeat;
+    background-size: 22px;    
+    position: absolute;
+    left: 18px;
+    top: 27%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: auto;
+}
+
+/*! DIRECCION */
+#DireccionHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#DireccionError.icono-error {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#DireccionCheck.icono-check {
+    right: 15%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! FECHA DE NACIMIENTO */
+#FechaHelp {
+    display: block;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#FechaError.icono-error {
+    right: 57%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+#FechaCheck.icono-check {
+    right: 57%;
+    top: 26px;
+    width: 28px;
+    height: 28px;
+}
+
+/*! BOTONES */
+.btn-reg {
+    --glow-color: rgba(255, 255, 255, 1);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgba(0, 0, 0, 1);
+    border: 0.25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em 0.25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 0.74em 0.25em var(--glow-color);
+    text-shadow: 0 0 0.5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.btn-reg::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: blur(2em);
+    opacity: 0.7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+.btn-reg:hover {
+    color: var(--btn-color);
+    background: linear-gradient(to bottom, #f16d0fff, #e2cb00ff);
+    /*box-shadow: 0 0 0.75em 0.25em var(--glow-color);*/
+}
+
+/* Respetar accesibilidad: foco visible */
+.btn-reg:focus {
+    outline: 3px solid rgba(255, 200, 80, 0.6);
+    outline-offset: 3px;
+}

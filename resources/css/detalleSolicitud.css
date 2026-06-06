@@ -1,0 +1,65 @@
+.modal-back {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    width: 900px;
+    height: 650px;
+    background: #2e2e2e;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    gap: 30px;
+    position: relative;
+    color: white;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ff4444;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal-center {
+    width: 100%;
+}
+
+.modal-center h3 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #ffc107;
+    text-align: center;
+}
+
+.grid-center {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 18px;
+}
+
+.field label {
+    font-size: 13px;
+    color: #bbbbbb;
+}
+
+.input-select {
+    background: #3a3a3a;
+    color: white;
+    font-size: 15px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-top: 5px;
+}

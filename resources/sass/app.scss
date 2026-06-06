@@ -1,0 +1,101 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Google Material Symbols
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+    height: 100%;
+    overflow: hidden; /* evitar doble scroll (solo body hará scroll) */
+}
+
+body {
+    min-height: 100%;
+    height: 100%;
+    overflow-y: auto; /* único scroll de la página */
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* smooth en móviles iOS */
+}
+
+//N Registro
+@import '../css/registro.css';
+
+//N Login
+@import '../css/login.css';
+
+//N Welcome
+@import '../css/welcome.css';
+
+//N Mantenimiento Preventivo
+@import '../css/mantPreventivo.css';
+
+//N Mantenimiento Correctivo
+@import '../css/mantCorrectivo.css';
+
+//! ADMINISTRADOR
+//N Dashboard
+@import '../css/dashboard.css';
+
+//N Perfil Administrador
+@import '../css/perfilAdministrador.css';
+
+//! CLIENTE
+//N Perfil Cliente
+@import '../css/perfilCliente.css';
+
+//N Solicitudes
+@import '../css/solicitud.css';
+
+//N Registro de Vehículo
+@import '../css/registroAuto.css';
+
+//N Mis Vehículos
+@import '../css/Cliente-vehiculos.css';
+
+//N Mis Solicitudes
+@import '../css/Cliente-solicitudes.css';
+
+//! TÉCNICO
+//N Perfil Técnico Automotriz
+@import '../css/perfilTecnico.css';
+
+//N Mantenimientos
+@import '../css/mantenimientos.css';
+
+//N Tablón de Seguimiento
+@import '../css/tablon-seguimiento.css';
+
+//N Nuevo Seguimiento
+@import '../css/new-seguimiento.css';
+
+//! GERENTE
+//N Layout Slidebar Gerente
+@import '../css/slidebarGerente.css';
+
+//N Detalles de los Repuestos
+@import '../css/detallesRepuestos.css';
+
+//N Layout Slidebar Técnico
+@import '../css/slidebarTecnico.css';
+
+//N Grupos de Inventarios
+@import '../css/inventarios.css';
+
+//N Tablas de Inventarios
+@import '../css/inventarioTabla.css';
+
+//N Gráfico del Nivel del Stock
+@import '../css/grafico.css';
+
+//N Detalles Repuesto
+@import '../css/detallesRepuestos.css';

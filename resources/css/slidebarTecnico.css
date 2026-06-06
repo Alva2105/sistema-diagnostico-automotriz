@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+/* =========================
+    Variables y Reset
+   ========================= */
+:root {
+    --orange-1: #ff7a00;
+    --orange-2: #ff9a1f;
+    --orange-3: #ffb347;
+    --bg: #000000;
+    --text: #ffffff;
+    --muted: #cfcfcf;
+    --accent: #ff6a00;
+}
+
+/* =========================
+    Layout principal
+   ========================= */
+.layout {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    min-height: 100vh;
+}
+
+/* =========================
+    Sidebar
+   ========================= */
+.sidebar-Tecnico {
+    background: linear-gradient(180deg, var(--orange-2), var(--orange-1) 5%, #e35d00 100%);
+    background-blend-mode: soft-light;
+    box-shadow:
+        inset 0 0 12px rgba(0, 0, 0, 0.18),
+        inset 0 0 25px rgba(0, 0, 0, 0.25),
+        0 0 8px rgba(0, 0, 0, 0.25);
+    position: relative;
+    padding: 24px 20px;
+    max-height: 100vh;
+    width: 130%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffae00 #1a1a1a;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5% 0;
+}
+
+.logo img {
+    width: 230px;
+    height: auto;
+}
+
+.menu-Tecnico {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.menu__tit {
+    font-size: 15px;
+}
+
+.menu__item {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 18px;
+    width: 100%;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+.menu__item:hover {
+    color: #000;
+    background: rgba(0, 0, 0, 0.25);
+    transform: translateX(5px);
+}
+
+.menu__item--active {
+    background: rgba(0, 0, 0, 0.25);
+    color: #000;
+    transform: translateX(5px);
+}
+
+.tech-has-submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Toggle (botón principal) */
+.tech-subtoggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.25);
+    color: #000;
+    border-radius: 8px;
+    cursor: default; /* no hover/interactive */
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+}
+
+/* Submenu */
+.tech-submenu {
+    margin: 8px 0 0 8px;
+    padding: 18px 10px;
+    background: rgba(30, 30, 30, 0.336);
+    border-left: 5px solid rgb(0, 0, 0);
+    border-radius: 6px;
+}
+
+/* Si el li tiene tech-open mostramos el submenu */
+.tech-has-submenu.tech-open > .tech-submenu {
+    display: block;
+}
+
+/* Items del submenu */
+.tech-subitem {
+    margin: 14px 0;
+    list-style: none;
+}
+
+.tech-sublink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: none; /* sin transiciones molestas */
+}
+
+/* hover SOLO del link dentro del submenu (suave) */
+.tech-sublink:hover {
+    background: rgba(0,0,0,0.12);
+    color: #000;
+}
+
+/* estado activo del sublink */
+.tech-active-sub {
+    background: #ffb14d;
+    color: #000;
+    font-weight:700;
+}
+
+/* iconito pequeño */
+.tech-subtoggle .material-symbols-outlined,
+.tech-sublink .material-symbols-outlined.tiny {
+    font-size: 24px;
+    opacity: .95;
+}
+
+.tech-sublink.tech-active-sub {
+    pointer-events: none;
+    cursor: default;
+}
+
+.tech-sublink.tech-active-sub:hover {
+    background-color: #ffb14d !important;
+    color: #000 !important;
+    transform: none !important;
+}

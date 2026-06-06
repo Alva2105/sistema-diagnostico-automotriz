@@ -1,0 +1,500 @@
+/* ==============================
+    estilos completos - detallesReportes.css
+    Reemplaza tu archivo actual por este
+   ============================== */
+
+/* Variables (por si no están definidas en otro lugar) */
+:root {
+    --orange-500: #ff8b00;
+    --orange-600: #ff6a00;
+    --muted-white: rgba(255, 255, 255, 0.92);
+    --card-shadow: rgba(0, 0, 0, 0.35);
+    --text-dark: #333333;
+    --bg-panel: #fafafa;
+}
+
+/* ----------------------
+    Area principal (scrollable)
+   ---------------------- */
+.tecnico-content-area {
+    height: calc(107.5vh - 80px);
+    /* Ajustar según header real */
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+    /* importante para flexbox + scroll */
+    padding-left: 63px;
+    background: url("/public/assets/img/generales/background-matelicGray.jpg") no-repeat center center/cover;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Wrapper de la página de reporte */
+.rp-page {
+    margin: 30px 40px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+.rp-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.rp-detail-date {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rp-time-badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+    color: var(--orange-500);
+    border: 1px solid var(--orange-500);
+}
+
+/* Botón volver */
+.rp-back-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--orange-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
+    transition: transform .18s ease, background .18s ease;
+    text-decoration: none;
+}
+
+.rp-back-btn i {
+    color: #fff;
+    font-size: 20px;
+}
+
+.rp-back-btn:hover {
+    transform: scale(1.06);
+    background: #fff;
+}
+
+.rp-back-btn:hover i {
+    color: var(--orange-500);
+}
+
+/* ================================
+   GRID PRINCIPAL
+   ================================ */
+.rp-detail-grid {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 25px;
+}
+
+.rp-full-width {
+    grid-column: 1 / 3 !important;
+}
+
+/* ================================
+   CARD GENERAL (resumen, obs, repuestos)
+   ================================ */
+.rp-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 6px 25px var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    color: var(--text-dark);
+}
+
+.rp-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--orange-500), var(--orange-600));
+}
+
+/* Info Grid (datos del mantenimiento) */
+.rp-info-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.rp-info-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.rp-label {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+
+.rp-value {
+    margin-top: 6px;
+    font-weight: 700;
+    color: #000;
+    font-size: 15px;
+}
+
+.rp-badge-orange {
+    background: rgba(255, 140, 0, 0.12);
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--orange-600);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+/* ================================
+   OBSERVACIONES Y REPUESOS (panel derecho)
+   ================================ */
+.rp-box-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange-600);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rp-obs-text {
+    background: var(--bg-panel);
+    color: var(--text-dark);
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.rp-parts-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.rp-parts-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fbfbfb;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border-left: 4px solid var(--orange-500);
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.rp-qty {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: var(--orange-600);
+    font-weight: 800;
+}
+
+.rp-part-name {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* placeholder cuando no hay repuestos */
+.rp-parts-list li[style] {
+    color: #a0a0a0;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+.rp-detail-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    padding-top: 8px;
+    padding-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rp-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 8px;
+    color: #cfcfcf;
+    font-size: 14px;
+}
+
+.rp-check-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 123, 0, 0.25);
+    background: transparent;
+    position: relative;
+    display: inline-block;
+    transition: all 0.18s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.rp-checkbox-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.rp-checkbox-wrapper input[type="checkbox"]:checked+.rp-check-box {
+    background: linear-gradient(180deg, rgba(255, 123, 0, 0.12), rgba(255, 123, 0, 0.06));
+    border-color: var(--orange-500);
+}
+
+.rp-checkbox-wrapper input[type="checkbox"]:checked+.rp-check-box::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+    color: var(--orange-500);
+    font-size: 11px;
+}
+
+.rp-label-text {
+    color: #cfcfcf;
+    font-size: 14px;
+}
+
+/* Botón enviar */
+.rp-send-btn {
+    background: linear-gradient(90deg, #00e676, #00c853);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 28px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 28px rgba(0, 200, 83, 0.22), 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform .18s ease, box-shadow .18s ease;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.rp-send-btn i {
+    font-size: 14px;
+}
+
+.rp-send-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px rgba(0, 200, 83, 0.28);
+}
+
+.rp-send-btn:active {
+    transform: translateY(-1px) scale(.995);
+}
+
+/* disabled style for send button (applied by JS) */
+.rp-send-btn.disabled,
+.rp-send-btn[disabled] {
+    opacity: 0.55;
+    pointer-events: none;
+    transform: none;
+}
+
+/* responsive footer */
+@media (max-width: 992px) {
+    .rp-detail-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding-bottom: 24px;
+    }
+
+    .rp-checkbox-wrapper {
+        justify-content: flex-start;
+        margin-right: 0;
+    }
+
+    .rp-send-btn {
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+    }
+}
+
+/* ================================
+   LISTA DE SEGUIMIENTOS (izquierda)
+   ================================ */
+.rt-date-section {
+    padding: 6px 0 18px 0;
+    margin-bottom: 6px;
+}
+
+.rt-date-title {
+    color: #000000;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 12px;
+    display: inline-block;
+    border-left: 4px solid rgb(255, 136, 0);
+    padding-left: 12px;
+}
+
+.rt-cards-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.rt-card {
+    background: linear-gradient(180deg, rgba(255, 139, 0, 0.12), rgba(255, 106, 0, 0.08));
+    color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 139, 0, 0.08);
+    min-width: 220px;
+    max-width: 340px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform .14s ease, box-shadow .14s ease, background .14s ease, opacity .14s ease, filter .14s ease;
+    user-select: none;
+    opacity: 0.95;
+    backdrop-filter: blur(0.6px);
+}
+
+/* Left icon container and small vertical bar */
+.rt-card-left .rt-file-icon {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.rt-vertical {
+    width: 3px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+}
+
+/* placa y hora */
+.rt-card-code {
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.rt-card-time {
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 13px;
+    opacity: .95;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* hover inactivo */
+.rt-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+    filter: saturate(1.02);
+    opacity: 1;
+}
+
+/* estado activo (seleccionado): naranja brillante, mayor sombra, outline) */
+.rt-card-active {
+    background: linear-gradient(180deg, var(--orange-500), var(--orange-600));
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 26px 56px rgba(0, 0, 0, 0.45), 0 0 32px rgba(255, 140, 0, 0.06) inset;
+    transform: translateY(-4px) scale(1.01);
+    opacity: 1;
+}
+
+.rt-card-active .rt-file-icon {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+.rt-card-active .rt-card-code {
+    color: #fff;
+}
+
+/* easy focus style (keyboard) */
+.rt-card:focus {
+    outline: 3px solid rgba(255, 160, 60, 0.14);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* Indicar suavemente tarjetas no seleccionadas con borde izquierdo ligero */
+.rt-card:not(.rt-card-active) {
+    border-left: 4px solid rgba(255, 140, 0, 0.06);
+}
+
+/* primer hijo: destacar un poco por defecto (no necesario si JS activa la primera) */
+.rt-card:first-child {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* ================================
+   Ajustes responsivos
+   ================================ */
+@media (max-width: 992px) {
+    .rp-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rt-cards-row {
+        gap: 10px;
+    }
+
+    .rt-card {
+        width: calc(100% - 12px);
+        max-width: none;
+    }
+}
+
+/* ================================
+   Misc: separadores y utilidades
+   ================================ */
+.separator-line {
+    height: 2px;
+    border-top: 1px solid rgba(255, 100, 60, 0.08);
+    margin: 22px 0;
+}
+
+/* Fin del archivo */

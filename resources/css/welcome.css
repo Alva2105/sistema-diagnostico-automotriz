@@ -1,0 +1,526 @@
+/*! === ESTILOS DE WELCOME CORREGIDOS === */
+.video-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+    border-bottom: 5px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- VIDEO --- */
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 110%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0; /* base */
+    pointer-events: none; /* evita bloqueo de clics */
+}
+
+/* --- CAPA OSCURA --- */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* más suave */
+    z-index: 1; /* encima del video, debajo del texto */
+}
+
+/* --- TEXTO PRINCIPAL --- */
+.titulo-content {
+    position: relative;
+    z-index: 2; /* el más alto dentro del contenedor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.titulo {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(6rem, 15vw, 12rem);
+    letter-spacing: 8px;
+    color: #fff;
+    text-shadow: 0 0 70px rgba(255,255,255,0.9);
+    transform: skewX(-8deg);
+    margin-bottom: -47px;
+}
+
+.subtitulo-welcome {
+    font-size: clamp(1rem, 2.2vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+}
+
+/*! === MAIN CONTENT === */
+.main-content {
+    background-color: #000;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+}
+
+.services-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: calc(100vh - 80px);
+}
+
+
+/*! === SERVICE PANELS === */
+.service-panel {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: fadeInUp 0.8s ease-out;
+    will-change: transform, box-shadow;
+    perspective: 900px; /* base para efecto 3D suave */
+}
+
+.service-panel:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.service-panel:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.panel-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    animation: imageReveal 1.2s ease-out both;
+    z-index: 1; /* por debajo del divisor */
+    transform-origin: center center;
+    will-change: transform, filter;
+}
+
+.panel-image .hover-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* mantiene proporción sin deformar */
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.5s ease;
+    transform: scale(1);    /* reduce el tamaño del video */
+    transform-origin: center; /* centra el video al reducirlo */
+    display: block;
+    z-index: 0;
+}
+
+.service-panel:hover .hover-video {
+    opacity: 1;
+}
+
+.panel-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;          /* usa el fondo de la imagen */
+    z-index: -1;                  /* asegura que el video no tape la imagen inicial */
+}
+
+/*! brillo en barrido y viñeta sutil */
+.panel-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 65%);
+    transform: translateX(-120%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+    animation: none; /* sin brillo automático */
+    opacity: 0;
+}
+
+/*! brillo solo en hover, más llamativo */
+.service-panel:hover .panel-image::after {
+    opacity: 1;
+    animation: sheen 1.2s ease-in-out 0s 1 forwards;
+}
+
+/*! === Línea diagonal central entre paneles === */
+.services-container::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 10px;
+    height: 92.5vh;
+    background: black;
+    transform: translateX(-50%);
+    box-shadow:
+        0 0 8px #fff,
+        0 0 15px #fff,
+        0 0 25px rgba(255, 255, 255, 0.7),
+        0 0 50px rgba(255, 255, 255, 0.5);
+    filter: blur(0.3px); /* suaviza el borde del neón */
+    z-index: 75;
+}
+
+/*! === IMÁGENES DE FONDO === */
+.preventive .panel-image {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('/public/assets/img/generales/Mantenimiento Preventivo.png');
+}
+
+.corrective .panel-image {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('/public/assets/img/generales/Mantenimiento Correctivo.png');
+}
+
+.image-overlay {
+    text-align: center;
+    position: relative;
+    z-index: 60; /* por encima del divisor */
+}
+
+.mant-title {
+    font-family: "Sansation", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 56px;
+    color: #fff;
+    text-shadow: 0 0 2px rgba(0,0,0,0.7), 3px 3px 0 rgba(0,0,0,0.85);
+    margin-top: 8%;
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    animation: fadeSlideUp 0.8s ease-out both;
+}
+
+.service-panel:hover .mant-title {
+    transform: scale(1.06);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+}
+
+.title-line1, .title-line2 {
+    display: block;
+    animation: fadeIn 0.8s ease-out;
+    font-size: 50px;
+}
+
+.title-line2 {
+    animation-delay: 0.2s;
+}
+
+/*! === BOTONES === */
+.service-panel,
+#servicio-container {
+    position: relative;
+    z-index: 0;
+}
+
+.services-btn {
+    position: absolute;
+    bottom: 8vh; /* posición dinámica en pantallas altas */
+    left: 42%;
+    transform: translateX(-50%);
+    background: transparent;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 14px 36px;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+    border-radius: 4px;
+    animation: fadeSlideUp 0.9s ease-out, pulseGlow 3s ease-in-out 1.4s infinite;
+    animation-fill-mode: both;
+    letter-spacing: 1px;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.0);
+    z-index: 9999 !important; /* Siempre encima de overlays y paneles */
+    pointer-events: auto;
+}
+
+.services-btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.35), 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.services-btn:focus-visible {
+    outline: none;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* animación escalonada por panel para los botones */
+.service-panel:nth-child(1) .services-btn { animation-delay: 0.8s; }
+.service-panel:nth-child(2) .services-btn { animation-delay: 1s; }
+
+.services-btn:active {
+    transform: translateX(-50%) translateY(-2px);
+}
+
+/* Cuando el panel se cierra o se restaura */
+#servicio-container.restaurado .services-btn {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+#servicio-container.restaurado .services-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .services-container::before {
+        display: none;
+    }
+    
+    .service-panel {
+        width: 100%;
+        height: 50vh;
+        min-height: 360px;
+    }
+    
+    .service-title {
+        font-size: 34px;
+    }
+    
+    .services-btn {
+        bottom: 24px; /* más arriba en pantallas pequeñas */
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+    
+    .header-content {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-title {
+        font-size: 28px;
+    }
+    
+    .services-btn {
+        padding: 10px 22px;
+        font-size: 14px;
+        border-width: 2px;
+    }
+}
+
+/*! Animaciones Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/*! Nueva animación de entrada suave */
+@keyframes imageReveal {
+    0% { transform: scale(1.08); filter: brightness(0.8); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+
+@keyframes fadeSlideUp {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/*! Brillo en barrido */
+@keyframes sheen {
+    0% { transform: translateX(-120%); }
+    60% { transform: translateX(120%); }
+    100% { transform: translateX(120%); }
+}
+
+/*! Pulso de resplandor para el botón */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0); }
+    50% { box-shadow: 0 0 0 6px rgba(255,255,255,0.18); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.0); }
+}
+
+/*! Animación del header */
+.header {
+    animation: slideInFromTop 0.8s ease-out;
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/*! Animación del contenido principal */
+.main-content {
+    animation: fadeIn 1s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+/*! ===ESPACIO DESLIZANTE PARA mantPreventivo */
+.service-panel.corrective {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+
+/* Panel dinámico cargado */
+#servicio-container {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    transition: all 0.6s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scroll interno solo dentro del panel cargado */
+#servicio-container.active {
+    right: 0;
+    opacity: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff8800 #111;
+}
+
+/* Scrollbar para Chrome/Edge */
+#servicio-container::-webkit-scrollbar {
+    width: 8px;
+}
+#servicio-container::-webkit-scrollbar-thumb {
+    background-color: #ff8800;
+    border-radius: 10px;
+}
+
+/* Botón cerrar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+.close-btn:hover {
+    color: #ff8800;
+}
+
+/*! === ESPACIO DESLIZANTE PARA mantCorrectivo (panel izquierdo) === */
+.service-panel.preventive {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+
+/* Contenedor dinámico compartido */
+#servicio-container {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    z-index: 15;
+    transition: all 0.6s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Entra desde la izquierda */
+#servicio-container.from-left {
+    left: -50%;
+}
+#servicio-container.from-left.active {
+    left: 0;
+    opacity: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff8800 #111;
+}
+
+/* Scrollbar */
+#servicio-container::-webkit-scrollbar {
+    width: 8px;
+}
+#servicio-container::-webkit-scrollbar-thumb {
+    background-color: #ff8800;
+    border-radius: 10px;
+}
+
+/* Botón cerrar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: -90%;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 20;
+}
+.close-btn:hover {
+    color: #ff8800;
+} 

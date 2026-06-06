@@ -1,0 +1,107 @@
+:root {
+    --sidebar-bg: #ff6a00;
+    --main-bg: #000;
+    --text-color: #fff;
+    --active-color: #ffffff;
+    --card-bg: #333;
+    --button-bg: #ffc300;
+    --button-text: #333;
+}
+
+/* --- 3. FICHAS DE SEGUIMIENTO (CARDS) --- */
+.seguimientos-cards {
+    padding: 80px;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.mant-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 280px;
+    height: 240px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mant-card:hover {
+    transform: translateY(-5px); /* Se mueve 5px hacia arriba */
+    box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3); /* Sombra elegante con el color naranja */
+}
+
+.mant-card-icon {
+    font-size: 30px;
+    color: var(--active-color);
+    position: relative;
+    width: 120px;
+    height: 85px;
+    border: 2px solid var(--active-color);
+    border-radius: 5px;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mant-card-icon .fas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    transition: transform 0.3s ease;
+}
+
+.mant-card:hover .fa-cog {
+    transform: translate(20%, -30%) rotate(120deg); /* Gira la rueda dentada */
+}
+
+.mant-card-icon .fa-car {
+    font-size: 44px;
+    opacity: 0.8;
+}
+
+.mant-card-icon .fa-cog {
+    font-size: 29px;
+    transform: translate(20%, -30%) rotate(30deg);
+    opacity: 1;
+}
+
+.mant-card p {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.btn-abrir {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 3px 0 #b38600;
+    text-decoration: none; /* ← Quita el subrayado */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-abrir:hover {
+    background: #ffd54f;
+}
+
+.btn-abrir:active {
+    box-shadow: 0 1px 0 #b38600; 
+    transform: translateY(2px);
+}

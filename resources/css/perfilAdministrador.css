@@ -1,0 +1,17 @@
+/* =========================
+Responsive
+   ========================= */
+@media (max-width: 920px) {
+    .layout {
+        grid-template-columns: 170px 1fr;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+}

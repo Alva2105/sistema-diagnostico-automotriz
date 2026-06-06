@@ -1,0 +1,331 @@
+/* ======= FONDO ======= */
+.rv-body {
+    margin: 0;
+    padding: 0;
+    background: url('/public/assets/img/generales/taller.png') no-repeat center center / cover;
+    background-size: cover;
+    font-family: 'Sansation', sans-serif;
+}
+
+/* Overlay oscurecido */
+.rv-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+/* ======= CONTENEDOR PRINCIPAL ======= */
+.rv-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 110px 40px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* ======= FORMULARIO ======= */
+.alerta-mensaje {
+    position: absolute;
+    top: 90%;
+    right: 20px;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: opacity .5s ease;
+    z-index: 9999;
+}
+
+.alerta-mensaje.success {
+    background: #28a745; /* verde */
+}
+
+.alerta-mensaje.error {
+    background: #c0392b; /* rojo */
+}
+
+.rv-formulario {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    gap: 29px;
+    align-items: stretch;
+    
+}
+
+/* Título */
+.rv-titulo {
+    font-size: 42px;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* FILAS */
+.rv-fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin: 15px 0 15px 0;
+}
+
+.rv-fila > .rv-grupo {
+    flex: 1;
+}
+
+.rv-fila > .rv-placa-box {
+    flex: none;
+}
+
+/* GRUPO */
+.rv-grupo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label */
+.rv-label {
+    color: #ddd;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.rv-label span {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.rv-input,
+.rv-select-trigger {
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+/* ============================
+    INPUTS (TU ESTILO BASE)
+============================ */
+.rv-input {
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 16px;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+
+    /* Importante para estilizar selects */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+
+    /* Chrome/Edge dark-mode fix */
+    color-scheme: dark;
+}
+
+/* ============================
+    FLECHA DEL SELECT (MODERNA)
+============================ */
+.rv-select {
+    position: relative;
+    user-select: none;
+    width: 100%;
+    height: 48px;
+}
+
+/* Estado inactivo */
+.rv-select.disabled {
+    opacity: .4;
+    pointer-events: none;
+}
+
+/* Trigger */
+.rv-select-trigger {
+    background: rgba(255,255,255,0.2);
+    padding: 0 14px;
+    width: 95%;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+}
+
+.rv-select-icon {
+    font-size: 22px;
+    transition: transform .25s;
+}
+
+/* Gira solo si el select NO está deshabilitado */
+.rv-select.open:not(.disabled) .rv-select-icon {
+    transform: rotate(180deg);
+}
+
+/* Dropdown */
+.rv-options {
+    position: absolute;
+    width: 100%;
+    background: silver;
+    border-radius: 12px;
+    margin-top: 6px;
+    padding: 6px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,.6);
+    display: none;
+    z-index: 20;
+    max-height: 220px;      /* EVITA QUE CREZCA MÁS */
+    overflow-y: auto;       /* Habilita scroll */
+    overflow-x: hidden;     /* Limpia bordes */
+}
+
+.rv-select.open .rv-options {
+    display: block;
+}
+
+/* Cada opción */
+.rv-option {
+    padding: 10px 14px;
+    color: #000000;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.rv-options::-webkit-scrollbar {
+    border-radius: 12px;
+    width: 8px;
+}
+.rv-options::-webkit-scrollbar-track {
+    background: rgba(47, 47, 47, 0.2);
+    border-radius: 12px;
+}
+.rv-options::-webkit-scrollbar-thumb {
+    background: rgba(221, 125, 0, 0.4);
+    border-radius: 12px;
+}
+.rv-options::-webkit-scrollbar-thumb:hover {
+    background: rgba(234, 133, 0, 0.6);
+    border-radius: 12px;
+}
+
+/* Logos */
+.rv-option img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Hover */
+.rv-option:hover {
+    background: #5c5b5b8d;
+    color: #ffb347;
+}
+
+/* OPCIÓN SELECCIONADA */
+.rv-option.selected {
+    background: #ff8c1a;
+    color: #111;
+}
+
+#tipo-custom {
+    margin-top: 6px;
+}
+
+/* ================================
+    CAJA EXTERNA
+================================ */
+.rv-placa-box {
+    width: 46.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 14px 6px 14px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    border: 3px solid #1b4bc4;
+    box-shadow: 0 0 18px rgba(0,0,0,0.9);
+}
+
+/* ================================
+    INPUT DE PLACA CON RAYAS
+================================ */
+.rv-input-placa {
+    width: 100%;
+    height: 52px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: monospace;
+    font-size: 36px;
+    font-weight: 900;
+    color: #000f98;
+    text-align: left;
+    padding-left: 6px;
+    letter-spacing: 14px;
+    background-image: linear-gradient(to right, black 70%, rgba(0,0,0,0) 0%);
+    background-size: 34px 3px;
+    background-position: 6px 90%;   /* <-- Igual al padding-left */
+    background-repeat: repeat-x;
+}
+
+.rv-input-placa::placeholder {
+    color: transparent;
+}
+
+.rv-placa-pais {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 4px rgb(121, 119, 119);
+}
+
+.rv-placa-text {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 4px rgb(121, 119, 119);
+}
+
+/* BOTÓN */
+.rv-btn {
+    width: 30%;
+    align-self: center;
+    padding: 14px 0;
+    margin-top: 35px;
+    font-size: 20px;
+    --glow-color: rgba(255, 255, 255, 1);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgba(0, 0, 0, 1);
+    border: 0.15em solid var(--glow-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em 0.25em var(--glow-color),
+                0 0 4em 1em var(--glow-spread-color),
+                inset 0 0 0.74em 0.25em var(--glow-color);
+    text-shadow: 0 0 0.5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.rv-btn:hover {
+    color: var(--btn-color);
+    background: linear-gradient(to bottom, #f16d0fff, #e2cb00ff);
+}
